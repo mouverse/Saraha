@@ -4,10 +4,12 @@ import { registerValidator } from "../validators/register.validator.js";
 import { loginValidator } from "../validators/login.validator.js";
 import { verify2faValidator } from "../validators/verify-2fa.validator.js";
 import { forgetPasswordValidator } from "../validators/forget-password.validator.js";
+import { resetPasswordValidator } from "../validators/reset-password.validator.js";
 import { registerController } from "../register/register.controller.js";
 import { loginController } from "../login/login.controller.js";
 import { verify2faController } from "../verify-2fa/verify-2fa.controller.js";
 import { forgetPasswordController } from "../forget-password/forget-password.controller.js";
+import { resetPasswordController } from "../reset-password/reset-password.controller.js";
 
 const authRoutes = Router();
 
@@ -18,6 +20,11 @@ authRoutes.post(
   "/forget-password",
   validate(forgetPasswordValidator),
   forgetPasswordController,
+);
+authRoutes.post(
+  "/reset-password",
+  validate(resetPasswordValidator),
+  resetPasswordController,
 );
 
 export default authRoutes;
