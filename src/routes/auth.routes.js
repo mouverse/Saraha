@@ -1,4 +1,4 @@
-﻿import { Router } from "express";
+import { Router } from "express";
 import { validate } from "../common/middlewares/validate.middleware.js";
 import { registerValidator } from "../validators/register.validator.js";
 import { loginValidator } from "../validators/login.validator.js";
@@ -15,7 +15,11 @@ const authRoutes = Router();
 
 authRoutes.post("/register", validate(registerValidator), registerController);
 authRoutes.post("/login", validate(loginValidator), loginController);
-authRoutes.post("/verify-2fa", validate(verify2faValidator), verify2faController);
+authRoutes.post(
+  "/verify-2fa",
+  validate(verify2faValidator),
+  verify2faController,
+);
 authRoutes.post(
   "/forget-password",
   validate(forgetPasswordValidator),
